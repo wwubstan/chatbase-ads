@@ -4,14 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChatBase Advertising</title>
+    <script>
+        // Function to handle user responses
+        function handleResponse(option) {
+            var response;
+            switch (option) {
+                case 1:
+                    response = "You selected Option 1";
+                    break;
+                case 2:
+                    response = "You selected Option 2";
+                    break;
+                case 3:
+                    response = "You selected Option 3";
+                    break;
+                default:
+                    response = "Please select a valid option.";
+            }
+            document.getElementById("response").textContent = response;
+
+            // Example: Update the ChatBase response on the website
+            updateChatBaseResponse(response);
+        }
+
+        // Function to update the ChatBase response on the website
+        function updateChatBaseResponse(newResponse) {
+            var chatBaseResponseElement = document.getElementById("chatbase_response");
+            if (chatBaseResponseElement) {
+                chatBaseResponseElement.innerHTML = newResponse;
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>ChatBase Advertising</h1>
 
     <div>
-        <p><strong>Selected Ad:</strong> <span id="selectedAd">Full Page</span></p>
-        <p><strong>Selected Commitment Level:</strong> <span id="selectedCommitment">$2,500 Commitment</span></p>
-        <p><strong>Price:</strong> $<span id="price">2,156.00</span></p>
+        <p><strong>Question:</strong> What option would you like to choose?</p>
+        <ul>
+            <li><button onclick="handleResponse(1)">Option 1</button></li>
+            <li><button onclick="handleResponse(2)">Option 2</button></li>
+            <li><button onclick="handleResponse(3)">Option 3</button></li>
+        </ul>
+        <p id="response"><em>Your response will appear here.</em></p>
     </div>
 
     <hr>
@@ -19,14 +54,6 @@
     <h2>Interactive Pricing Tool:</h2>
     <iframe src="advertising_prices.html" frameborder="0" width="100%" height="400px"></iframe>
 
-    <script>
-        // Function to update the ChatBase pricing on the page
-        function updateChatBasePrice(newPrice) {
-            var chatBasePriceElement = document.getElementById("chatbase_price");
-            if (chatBasePriceElement) {
-                chatBasePriceElement.innerHTML = "$" + newPrice;
-            }
-        }
-    </script>
+    <div id="chatbase_response"><em>ChatBase response will appear here.</em></div>
 </body>
 </html>
